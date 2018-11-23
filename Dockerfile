@@ -29,7 +29,7 @@ ADD trib-cluster.sh /redis/cluster
 
 EXPOSE 7000 7001 7002 7003 7004 7005
 
-CMD /redis/cluster/build.sh && /redis/cluster/start-redis-cluster.sh && /redis/cluster/trib-cluster.sh && tail -f /dev/null
+CMD /redis/cluster/build.sh && /redis/cluster/start-redis-cluster.sh && tail -f /dev/null
 
 
 	 
