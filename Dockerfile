@@ -2,7 +2,7 @@ FROM centos:7.5.1804
 
 MAINTAINER Redis docker image  'xiaoweiqb@126.com'
 
-RUN yum -y install which wget gettext  autoconf automake  make gcc-c++
+RUN yum -y install  wget gettext autoconf automake  make gcc-c++
 
 ENV redis-version 5.0.2
 
@@ -19,12 +19,12 @@ RUN mkdir /redis \
 
 WORKDIR /redis/cluster
 
-ADD build.sh /redis/cluster
-ADD custom_params.conf /redis/cluster
-ADD redis-cluster.tmpl /redis/cluster
-ADD start-redis-cluster.sh /redis/cluster
-ADD shutdown-redis-cluster.sh /redis/cluster
-ADD trib-cluster.sh /redis/cluster
+COPY build.sh /redis/cluster
+COPY custom_params.conf /redis/cluster
+COPY redis-cluster.tmpl /redis/cluster
+COPY start-redis-cluster.sh /redis/cluster
+COPY shutdown-redis-cluster.sh /redis/cluster
+COPY trib-cluster.sh /redis/cluster
 
 
 EXPOSE 7000 7001 7002 7003 7004 7005
