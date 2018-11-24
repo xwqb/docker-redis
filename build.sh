@@ -17,10 +17,9 @@ fi
 
 
 for dir in `seq 7000 7005`;do
- mkdir -p $dir
- mkdir -p $dir/data
+ mkdir -p work_spac/$dir
  echo "mkdir -p dir -> $dir"
- PORT=$dir PASS=$PASS envsubst < $path/redis-cluster.tmpl >  $dir/redis-cluster_$dir.conf
+ PORT=$dir PASS=$PASS envsubst < $path/redis-cluster.tmpl > work_spac/$dir/redis-cluster_$dir.conf
 done
 
 

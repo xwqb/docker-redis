@@ -5,7 +5,18 @@ cluster-enabled yes
 cluster-config-file nodes_${PORT}.conf
 pidfile /var/run/redis_${PORT}.pid
 cluster-node-timeout 5000
-appendonly no
 daemonize yes
 protected-mode no
-dir data
+# aof set
+appendonly yes
+appendfsync everysec
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 1GB
+appendfilename "appendonly.aof"
+# rdb set
+save 900 1
+save 300 10
+save 60 10000
+dbfilename dump.rdb
+
+dir ./

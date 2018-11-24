@@ -6,7 +6,7 @@ readParam(){
     if [[ $line =~ host.* ]];then
      host=${line#*=}
      if [[ $host ]];then
-      for port in `ls -l|grep ^d|awk '{print$9}'`;do
+      for port in `ls -l work_spac|grep ^d|awk '{print$9}'`;do
        cluster=$cluster" "$host:$port
       done
      fi
@@ -21,6 +21,7 @@ readParam(){
  else
   echo "not found password"
  fi
+  echo "redis-cli  --cluster create --cluster-replicas 1 $cluster $password"
   echo "yes" | redis-cli  --cluster create --cluster-replicas 1 $cluster $password
  else
   echo "not found file"
